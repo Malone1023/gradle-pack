@@ -164,3 +164,10 @@ this can lead to crashes when the resource is queried in a configuration that do
 
 看游戏是横屏还是竖屏，如果是竖屏就把竖屏文件里layout-port的xml拷贝一份到默认的layout文件夹里
 
+
+
+
+
+
+
+
