@@ -164,7 +164,17 @@ this can lead to crashes when the resource is queried in a configuration that do
 
 看游戏是横屏还是竖屏，如果是竖屏就把竖屏文件里layout-port的xml拷贝一份到默认的layout文件夹里
 
+27、打包工具所用dex2jar是修改过源码的版本
+gradle打包方式，报错 java.lang.RuntimeException: can not merge I and Z
+报错原因，dex2jar转换dex为jar时，转换部分方法失败。参考帖子：http://lonelyzerg.xyz/?p=135   https://ivonhoe.github.io/2017/02/09/美团如何防dex2jar/
+    
+    以此，可引申出as插件实现防反编译（但仅仅针对dex2jar）。
 
+    解决方案：获取dex2jar源码，修改TypeClass.java类的实现，修改如下：
+    不能放图！！！修改方式在上面的帖子中有。
+    重新在项目根目录执行 ./gradlew 进行编译。替换TypeClass.java类所在的 dex-ir 模块的jar包。然后打包运行正常。
+    网上帖子 https://sourceforge.net/p/dex2jar/tickets/237/  提到了两种处理方式，目前使用的是第二种处理方式。
+-后续，测试发现，dex2jar 2.1 版本已经修复了此问题，但是该项目好像已经不再维护了，自己拉github代码下来，编译升级。遇到问题，大把截图放不了，有需要找俊峰要。
 
 
 
